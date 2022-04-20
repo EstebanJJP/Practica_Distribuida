@@ -12,6 +12,7 @@ Phil_names = ["Marx", "Nietschze", "Camus", "Sartre", "de Beuvoir"]
 K = 100
 
 mqttBroker = "mqtt.eclipseprojects.io"
+# mqttBroker = "wild.mat.ucm.es"
 client = mqtt.Client("Mesa_contemporanea")
 client.connect(mqttBroker)
 

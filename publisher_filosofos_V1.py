@@ -1,3 +1,5 @@
+
+
 from multiprocessing import Process
 from multiprocessing import Condition, Lock
 from multiprocessing import Manager, Value
@@ -7,12 +9,11 @@ import paho.mqtt.client as mqtt
 
 
 NPHIL = 5
-Phil_names = ["Sócrates", "Platón", "Tales", "Heráclito", "Aristóteles"]
+Phil_names = ["SÃ³crates", "PlatÃ³n", "Tales", "HerÃ¡clito", "AristÃ³teles"]
 K = 100
 
 mqttBroker = "mqtt.eclipseprojects.io"
-# mqttBroker = "mat.wild.ucm.es"
-client = mqtt.Client("Mesa_filosofos")
+client = mqtt.Client("Mesa_antigua")
 client.connect(mqttBroker)
 
 
@@ -56,18 +57,18 @@ def delay(n):
 def philosopher_task(num:int, table: Table):
     table.set_current_phil(num)
     while True:
-        client.publish("Mesa_filosofos", "Philosofer "+str(Phil_names[num])+" thinking")
-        print (f"Philosofer {num} thinking")
+        client.publish("Mesa_antigua", str(Phil_names[num])+" estÃ¡ pensando")
+        print (f"{Phil_names[num]}  estÃ¡ pensando")
         delay(6)
-        client.publish("Mesa_filosofos", "Philosofer "+str(Phil_names[num])+" wants to eat")
-        print (f"Philosofer {num} wants to eat")
+        client.publish("Mesa_antigua", str(Phil_names[num])+" quiere comer")
+        print (f"{Phil_names[num]}  quiere comer")
         table.wants_eat(num)
-        client.publish("Mesa_filosofos", "Philosofer "+str(Phil_names[num])+" eating")
-        print (f"Philosofer {num} eating")
+        client.publish("Mesa_antigua", str(Phil_names[num])+" esta comiendo")
+        print (f"{Phil_names[num]}  esta comiendo")
         table.wants_think(num)
         delay(6)
-        client.publish("Mesa_filosofos", "Philosofer "+str(Phil_names[num])+" stops eating")
-        print (f"Philosofer {num} stops eating")
+        client.publish("Mesa_antigua", str(Phil_names[num])+" para de comer")
+        print (f"{Phil_names[num]}  para de comer")
         delay(6)
         
         

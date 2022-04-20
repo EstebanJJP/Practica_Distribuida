@@ -11,6 +11,7 @@ Phil_names = ["Sócrates", "Platón", "Tales", "Heráclito", "Aristóteles"]
 K = 100
 
 mqttBroker = "mqtt.eclipseprojects.io"
+# mqttBroker = "mat.wild.ucm.es"
 client = mqtt.Client("Mesa_filosofos")
 client.connect(mqttBroker)
 

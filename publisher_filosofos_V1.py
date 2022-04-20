@@ -9,10 +9,11 @@ import paho.mqtt.client as mqtt
 
 
 NPHIL = 5
-Phil_names = ["SÃ³crates", "PlatÃ³n", "Tales", "HerÃ¡clito", "AristÃ³teles"]
+Phil_names = ["Sócrates", "Platón", "Tales", "Heráclito", "Aristóteles"]
 K = 100
 
 mqttBroker = "mqtt.eclipseprojects.io"
+# mqttBroker = 'wild.mat.ucm.es'
 client = mqtt.Client("Mesa_antigua")
 client.connect(mqttBroker)
 
@@ -57,18 +58,18 @@ def delay(n):
 def philosopher_task(num:int, table: Table):
     table.set_current_phil(num)
     while True:
-        client.publish("Mesa_antigua", str(Phil_names[num])+" estÃ¡ pensando")
-        print (f"{Phil_names[num]}  estÃ¡ pensando")
+        client.publish("Mesa_antigua", str(Phil_names[num])+" esta pensando")
+        print (f"El filosofo {num}  esta pensando")
         delay(6)
         client.publish("Mesa_antigua", str(Phil_names[num])+" quiere comer")
-        print (f"{Phil_names[num]}  quiere comer")
+        print (f"El filosofo {num}  quiere comer")
         table.wants_eat(num)
         client.publish("Mesa_antigua", str(Phil_names[num])+" esta comiendo")
-        print (f"{Phil_names[num]}  esta comiendo")
+        print (f"El filosofo {num} esta comiendo")
         table.wants_think(num)
         delay(6)
         client.publish("Mesa_antigua", str(Phil_names[num])+" para de comer")
-        print (f"{Phil_names[num]}  para de comer")
+        print (f"El filosofo {num}  para de comer")
         delay(6)
         
         

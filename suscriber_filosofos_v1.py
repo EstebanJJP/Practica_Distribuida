@@ -5,6 +5,7 @@ def on_message(client, userdata, message):
     print(str(message.payload.decode("utf-8")))
 
 mqttBroker = "mqtt.eclipseprojects.io"
+# mqttBroker = "wild.mat.ucm.es"
 client = mqtt.Client()
 client.connect(mqttBroker)
 

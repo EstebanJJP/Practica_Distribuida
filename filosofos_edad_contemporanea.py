@@ -57,14 +57,14 @@ def delay(n):
 def philosopher_task(num:int, table: Table):
     table.set_current_phil(num)
     while True:
-        client.publish("Mesa_contemporanea", str(Phil_names[num])+" estÃ¡ pensando")
-        print (f"{Phil_names[num]} estÃ¡ pensando")
+        client.publish("Mesa_contemporanea", str(Phil_names[num])+" esta pensando")
+        print (f"{Phil_names[num]} esta pensando")
         delay(6)
         client.publish("Mesa_contemporanea", str(Phil_names[num])+" quiere comer")
         print (f"{Phil_names[num]} quiere comer")
         table.wants_eat(num)
-        client.publish("Mesa_contemporanea", str(Phil_names[num])+" estÃ¡ comiendo")
-        print (f"{Phil_names[num]} estÃ¡ comiendo")
+        client.publish("Mesa_contemporanea", str(Phil_names[num])+" esta comiendo")
+        print (f"{Phil_names[num]} esta comiendo")
         table.wants_think(num)
         delay(6)
         client.publish("Mesa_contemporanea", str(Phil_names[num])+" para de comer")

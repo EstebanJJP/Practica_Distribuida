@@ -13,7 +13,7 @@ K = 100
 
 mqttBroker = "mqtt.eclipseprojects.io"
 # mqttBroker = "wild.mat.ucm.es"
-client = mqtt.Client("Mesa_contemporanea")
+client = mqtt.Client("Mesa/contemporanea")
 client.connect(mqttBroker)
 
 
